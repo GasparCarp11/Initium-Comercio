@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "925573931961",
+    "firebase_url": "https://initium-a5347.firebaseio.com",
+    "project_id": "initium-a5347",
+    "storage_bucket": "initium-a5347.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925573931961:android:bbf5663efcac2ce2528c68",
+        "android_client_info": {
+          "package_name": "com.example.initium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925573931961-ir1rchj1rams1ltcgf16a97o5svm2uh1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.initium",
+            "certificate_hash": "0ad6784582ceb7cd68128f7e7057b0e9dcd40004"
+          }
+        },
+        {
+          "client_id": "925573931961-v4roetv1u0fqvudnl7731to1e1fibefl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLxEkeh3ETwbg4CConOQFAcVlx2SQ805Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925573931961-v4roetv1u0fqvudnl7731to1e1fibefl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925573931961:android:b39ebfe686e38915528c68",
+        "android_client_info": {
+          "package_name": "com.example.initium_2_comercio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925573931961-nke3n4b9c4qkpf3544f3hqntltrl000c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.initium_2_comercio",
+            "certificate_hash": "0ad6784582ceb7cd68128f7e7057b0e9dcd40004"
+          }
+        },
+        {
+          "client_id": "925573931961-v4roetv1u0fqvudnl7731to1e1fibefl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLxEkeh3ETwbg4CConOQFAcVlx2SQ805Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925573931961-v4roetv1u0fqvudnl7731to1e1fibefl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
