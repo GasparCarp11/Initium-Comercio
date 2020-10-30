@@ -11,6 +11,14 @@ class ShopBloc implements Bloc {
   Stream<QuerySnapshot> showProducts(String idShop) =>
       cloudRepository.showProducts(idShop);
 
+  Future<void> availableProduct(
+          String shopUID, String productID, bool available) =>
+      cloudRepository.availableProduct(shopUID, productID, available);
+
+  Future<void> updateProduct(
+          String shopUID, String productID, String nameProduct, String prize) =>
+      cloudRepository.updateProduct(shopUID, productID, nameProduct, prize);
+
   @override
   void dispose() {}
 }
