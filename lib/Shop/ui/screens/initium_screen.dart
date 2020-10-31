@@ -27,8 +27,6 @@ class _InitiumScreenState extends State<InitiumScreen> {
             stream: shopBloc.showOrders(shopInfo["uid"]),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              print("Snapashot");
-              print(snapshot.connectionState);
               if (snapshot.connectionState == ConnectionState.waiting ||
                   snapshot.connectionState == ConnectionState.none) {
                 return Center(
@@ -39,16 +37,13 @@ class _InitiumScreenState extends State<InitiumScreen> {
                     ],
                   ),
                 );
-              } else if (snapshot.data == null) {
-                return Center(
-                    child: Text("Error al obtener información de los pedidos"));
-              } else if (snapshot.hasData) {
+              }
+              if (snapshot.hasData) {
                 List<DocumentSnapshot> data = snapshot.data.docs;
                 return ListView.builder(
                     itemCount: data.length,
                     itemBuilder: (BuildContext context, index) {
                       Map<String, dynamic> orders = data[index].data();
-                      print(orders);
                       return InkWell(
                         onTap: () {},
                         child: Container(
@@ -124,6 +119,10 @@ class _InitiumScreenState extends State<InitiumScreen> {
                         ),
                       );
                     });
+              } else {
+                return Center(
+                  child: Text("No existen pedidos o no pudimos encontrarlos"),
+                );
               }
             }));
   }
