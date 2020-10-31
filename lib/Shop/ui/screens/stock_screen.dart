@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:initium_2_comercio/Shop/bloc/bloc_shop.dart';
+import 'package:initium_2_comercio/Shop/ui/screens/sign_in_screen.dart';
 import 'package:initium_2_comercio/Shop/ui/widgets/list_products.dart';
 import 'package:initium_2_comercio/Shop/ui/widgets/navigation_bar.dart';
 import 'package:initium_2_comercio/Shop/ui/widgets/shop_info.dart';
@@ -12,23 +13,19 @@ class StockScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     shopBloc = BlocProvider.of(context);
-    Map<String, dynamic> infoshop = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: createAppBar(infoshop, context),
+      appBar: createAppBar(shopInfo, context),
       bottomNavigationBar: NavigationBar(),
       backgroundColor: Colors.blueGrey[800],
       body: Column(
         children: [
-          InfoShop(
-              shopName: infoshop["name"],
-              shopAddress: infoshop["address"],
-              shopPhoto: infoshop["photoURL"]),
+          InfoShop(),
           Divider(
             height: 40,
             thickness: 5,
             color: Colors.blue[900],
           ),
-          Expanded(child: ListProducts(idShop: infoshop["uid"])),
+          Expanded(child: ListProducts()),
         ],
       ),
     );

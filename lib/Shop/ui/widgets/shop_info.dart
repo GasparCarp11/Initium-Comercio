@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:initium_2_comercio/Shop/ui/screens/sign_in_screen.dart';
 
 class InfoShop extends StatelessWidget {
-  final String shopName;
-  final String shopAddress;
-  final String shopPhoto;
-
-  InfoShop(
-      {Key key,
-      @required this.shopName,
-      @required this.shopAddress,
-      @required this.shopPhoto});
+  InfoShop({
+    Key key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +23,7 @@ class InfoShop extends StatelessWidget {
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(shopPhoto),
+                    image: NetworkImage(shopInfo["photoURL"]),
                   ))),
         ),
         Column(
@@ -36,7 +31,7 @@ class InfoShop extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 40, top: 20),
               child: Text(
-                shopName,
+                shopInfo["name"],
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
@@ -44,7 +39,7 @@ class InfoShop extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 40),
               child: Text(
-                shopAddress,
+                shopInfo["address"],
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),

@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:initium_2_comercio/Shop/bloc/bloc_shop.dart';
+import 'package:initium_2_comercio/Shop/services/cloud_firestore.dart';
 
-import '../../../gradient_back.dart';
+Map<String, dynamic> shopInfo;
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key key}) : super(key: key);
@@ -72,14 +73,12 @@ class _SignInScreenState extends State<SignInScreen> {
             child: InkWell(
                 onTap: () {
                   shopBloc.authShop(idShop).then((value) {
-                    Map<String, dynamic> infoshop = value.data();
-                    if (infoshop != null) {
-                      print("Hay info");
-                      print(infoshop);
-                      Navigator.pushNamed(context, "stock",
-                          arguments: infoshop);
+                    shopInfo = value.data();
+                    if (shopInfo != null) {
+                      print(shopInfo);
+                      Navigator.pushNamed(context, "stock");
                     }
-                    if (infoshop == null) {
+                    if (shopInfo == null) {
                       show("ID inválido, verifique que este bien escrito.");
                     }
                   });

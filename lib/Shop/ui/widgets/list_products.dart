@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:initium_2_comercio/Shop/bloc/bloc_shop.dart';
+import 'package:initium_2_comercio/Shop/ui/screens/sign_in_screen.dart';
 
 class ListProducts extends StatefulWidget {
-  final String idShop;
-  ListProducts({Key key, @required this.idShop});
+  ListProducts({Key key});
 
   @override
   _ListProductsState createState() => _ListProductsState();
@@ -16,7 +16,7 @@ class _ListProductsState extends State<ListProducts> {
   Widget build(BuildContext context) {
     ShopBloc shopBloc = BlocProvider.of(context);
     return StreamBuilder(
-        stream: shopBloc.showProducts(widget.idShop),
+        stream: shopBloc.showProducts(shopInfo["uid"]),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.connectionState == ConnectionState.none) {
@@ -77,7 +77,7 @@ class _ListProductsState extends State<ListProducts> {
                     dense: false,
                     onTap: () {
                       editDialog(
-                          context, widget.idShop, data[index].id, products);
+                          context, shopInfo["uid"], data[index].id, products);
                     },
                   );
                 });

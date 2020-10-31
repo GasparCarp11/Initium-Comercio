@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+Map<String, dynamic> infoshop;
+
 class CloudFirestoreAPI {
   final String USERS = "users";
   final String ORDERS = "orders";
@@ -9,6 +11,7 @@ class CloudFirestoreAPI {
 
   Future<DocumentSnapshot> authShop(String docShop) async {
     DocumentSnapshot infoShop = await _db.collection(SHOPS).doc(docShop).get();
+    print(infoshop);
     return infoShop;
   }
 
@@ -48,5 +51,13 @@ class CloudFirestoreAPI {
         .update({'name': nameProduct, 'prize': realPrize})
         .then((value) => print("Actualizado"))
         .catchError((onError) => print("Error:$onError"));
+  }
+
+  Stream<QuerySnapshot> showOrders(String idShop) {
+    Stream<QuerySnapshot> refOrders = _db
+        .collection(ORDERS)
+        .where("uidshop", isEqualTo: "$idShop")
+        .snapshots();
+    return refOrders;
   }
 }

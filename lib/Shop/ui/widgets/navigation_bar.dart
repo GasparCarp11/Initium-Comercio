@@ -7,7 +7,7 @@ class NavigationBar extends StatefulWidget {
 
 class _NavigationBarState extends State<NavigationBar> {
   int _currentIndex;
-  final List<String> _list = ["account", "initium", "wifi_connection"];
+  final List<String> _list = ["stock", "initium", "wifi_connection"];
 
   @override
   Widget build(BuildContext context) {
