@@ -1,4 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:initium_2_comercio/Shop/bloc/bloc_shop.dart';
 import 'package:initium_2_comercio/Shop/ui/screens/sign_in_screen.dart';
 
 class InfoShop extends StatelessWidget {
@@ -8,6 +13,8 @@ class InfoShop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    File _image;
+    final picker = ImagePicker();
     return Row(
       children: <Widget>[
         Padding(
@@ -47,7 +54,15 @@ class InfoShop extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 40, top: 10),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () async {
+                    final pickedFile = await picker
+                        .getImage(source: ImageSource.camera)
+                        .then((image) {
+                      _image = File(image.path);
+                      Navigator.pushNamed(context, "add_product",
+                          arguments: _image);
+                    }).catchError((error) => print(error));
+                  },
                   child: Container(
                     width: 180,
                     height: 35,

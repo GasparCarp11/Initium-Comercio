@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:initium_2_comercio/Shop/model/product.dart';
+import 'package:initium_2_comercio/Shop/ui/screens/sign_in_screen.dart';
 
 Map<String, dynamic> infoshop;
 
@@ -50,6 +52,27 @@ class CloudFirestoreAPI {
     return collectionReference
         .update({'name': nameProduct, 'prize': realPrize})
         .then((value) => print("Actualizado"))
+        .catchError((onError) => print("Error:$onError"));
+  }
+
+  Future<void> newProduct(bool available, String nameProduct, var prizeProduct,
+      String photoURL) async {
+    DocumentReference collectionReference = FirebaseFirestore.instance
+        .collection("shops")
+        .doc(shopInfo["uid"])
+        .collection("products")
+        .doc();
+
+    var realPrize = int.parse(prizeProduct);
+
+    return collectionReference
+        .set({
+          "available": available,
+          'name': nameProduct,
+          'photoURL': photoURL,
+          'prize': realPrize,
+        })
+        .then((value) => print("nuevo producto"))
         .catchError((onError) => print("Error:$onError"));
   }
 

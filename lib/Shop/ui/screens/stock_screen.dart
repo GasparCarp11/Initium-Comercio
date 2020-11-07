@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:initium_2_comercio/Shop/bloc/bloc_shop.dart';
@@ -6,7 +5,6 @@ import 'package:initium_2_comercio/Shop/ui/screens/sign_in_screen.dart';
 import 'package:initium_2_comercio/Shop/ui/widgets/list_products.dart';
 import 'package:initium_2_comercio/Shop/ui/widgets/navigation_bar.dart';
 import 'package:initium_2_comercio/Shop/ui/widgets/shop_info.dart';
-import 'package:initium_2_comercio/gradient_back.dart';
 
 class StockScreen extends StatelessWidget {
   ShopBloc shopBloc;
