@@ -36,6 +36,9 @@ class ShopBloc implements Bloc {
   Future<StorageUploadTask> uploadPhoto(String path, File image) =>
       storageRepository.uploadPhoto(path, image);
 
+  Future<DocumentSnapshot> userInfo(String uidUser) =>
+      cloudRepository.userInfo(uidUser);
+
   @override
   void dispose() {}
 }

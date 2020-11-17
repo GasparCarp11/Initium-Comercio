@@ -83,4 +83,9 @@ class CloudFirestoreAPI {
         .snapshots();
     return refOrders;
   }
+
+  Future<DocumentSnapshot> userInfo(String uidUser) async {
+    DocumentSnapshot infoUser = await _db.collection(USERS).doc(uidUser).get();
+    return infoUser;
+  }
 }
