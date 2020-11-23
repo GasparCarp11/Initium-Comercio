@@ -88,4 +88,14 @@ class CloudFirestoreAPI {
     DocumentSnapshot infoUser = await _db.collection(USERS).doc(uidUser).get();
     return infoUser;
   }
+
+  Future<void> readyOrder(String orderID) async {
+    DocumentReference collectionReference =
+        FirebaseFirestore.instance.collection("orders").doc(orderID);
+
+    return collectionReference
+        .update({'isReady': true})
+        .then((value) => print("Actualizado"))
+        .catchError((onError) => print("Error:$onError"));
+  }
 }

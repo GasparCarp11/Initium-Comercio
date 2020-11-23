@@ -39,6 +39,9 @@ class ShopBloc implements Bloc {
   Future<DocumentSnapshot> userInfo(String uidUser) =>
       cloudRepository.userInfo(uidUser);
 
+  Future<void> readyOrder(String orderID) =>
+      cloudRepository.readyOrder(orderID);
+
   @override
   void dispose() {}
 }

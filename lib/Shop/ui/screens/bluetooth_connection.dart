@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:initium_2_comercio/Shop/bloc/bloc_shop.dart';
 
 class BluetoothApp extends StatefulWidget {
   @override
@@ -470,12 +472,23 @@ class _BluetoothAppState extends State<BluetoothApp> {
   }
 
   void _sendOnInfoOrderToBluetooth(String id, bool c1) async {
+    ShopBloc shopBloc = BlocProvider.of(context);
+    String code = c1 ? ".R$id" : ":R$id";
+    int sumaxor = 0;
+
+    for (int i = 0; i < code.length; i++) {
+      sumaxor = code.codeUnits[i] ^ sumaxor;
+    }
+
     c1
-        ? connection.output.add(utf8.encode("@.W${id.toString()}V!"))
-        : connection.output.add(utf8.encode("@:W${id.toString()}V!"));
+        ? connection.output
+            .add(utf8.encode("@.R${id}${String.fromCharCode(sumaxor)}!"))
+        : connection.output
+            .add(utf8.encode("@:R${id}${String.fromCharCode(sumaxor)}!"));
 
     await connection.output.allSent;
-    show('Aguarde confirmación de la centrla');
+    show('Aguarde confirmación de la central');
+    await shopBloc.readyOrder(id);
     setState(() {
       _deviceState = 1;
     });
